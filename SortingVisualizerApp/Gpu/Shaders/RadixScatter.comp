@@ -1,0 +1,34 @@
+#version 430 core
+layout(local_size_x = 256) in;
+
+layout(std430, binding = 0) readonly buffer DataBuffer
+{
+    uint values[];
+};
+
+layout(std430, binding = 1) writeonly buffer TempBuffer
+{
+    uint tempValues[];
+};
+
+layout(std430, binding = 2) buffer OffsetBuffer
+{
+    uint offsets[16];
+};
+
+uniform uint uShift;
+uniform uint uN;
+
+void main()
+{
+    uint idx = gl_GlobalInvocationID.x;
+    if (idx >= uN)
+    {
+        return;
+    }
+
+    uint value = values[idx];
+    uint digit = (value >> uShift) & 15u;
+    uint outIndex = atomicAdd(offsets[digit], 1u);
+    tempValues[outIndex] = value;
+}

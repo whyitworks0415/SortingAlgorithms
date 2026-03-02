@@ -1,0 +1,21 @@
+﻿# Build outputs
+**/bin/
+**/obj/
+
+# User/IDE files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Logs/temp
+*.log
+*.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Local analysis/export artifacts
+analysis/
