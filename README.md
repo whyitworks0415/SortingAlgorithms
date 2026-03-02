@@ -61,3 +61,7 @@ CSV columns:
 - `H`: Toggle HUD overlay
 - `D`: Toggle diagnostics overlay
 - `F`: Toggle fullscreen
+
+## License
+
+MIT. See [LICENSE](LICENSE).
